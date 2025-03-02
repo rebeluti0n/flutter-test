@@ -1,12 +1,16 @@
 import 'dart:convert';
 import 'dart:developer';
+import 'package:firebase_analytics/firebase_analytics.dart';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
+import '../detail/detail_page.dart';
+
 class QuestionPage extends StatefulWidget {
-  final String queston;
-  const QuestionPage({super.key, required this.queston});
+  final String question;
+  const QuestionPage({super.key, required this.question});
 
   @override
   State<StatefulWidget> createState() {
@@ -83,8 +87,21 @@ class _QuestionPage extends State<QuestionPage> {
                 selectNumber == -1
                     ? Container()
                     : ElevatedButton(
-                        onPressed: () {
-                          // TODO
+                        onPressed: () async {
+                          await FirebaseAnalytics.instance.logEvent(
+                            name: "personal_select",
+                            parameters: {
+                              "test_name": title,
+                              "select": selectNumber
+                            },
+                          ).then((result) => {
+                                Navigator.of(context).pushReplacement(
+                                    MaterialPageRoute(builder: (context) {
+                                  return DetailPage(
+                                      answer: questions['answer'][selectNumber],
+                                      question: questions['question']);
+                                }))
+                              });
                         },
                         child: const Text('성격 보기'))
               ],
@@ -92,7 +109,7 @@ class _QuestionPage extends State<QuestionPage> {
           );
         }
       },
-      future: loadAsset(widget.queston),
+      future: loadAsset(widget.question),
     );
   }
 }
