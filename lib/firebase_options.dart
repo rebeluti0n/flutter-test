@@ -54,6 +54,7 @@ class DefaultFirebaseOptions {
     appId: '1:200152693011:android:e05c86f39e179e060342e6',
     messagingSenderId: '200152693011',
     projectId: 'example-7e6bc',
+    databaseURL: 'https://example-7e6bc-default-rtdb.firebaseio.com',
     storageBucket: 'example-7e6bc.firebasestorage.app',
   );
 
@@ -62,7 +63,9 @@ class DefaultFirebaseOptions {
     appId: '1:200152693011:ios:f70a55ff5aa21da70342e6',
     messagingSenderId: '200152693011',
     projectId: 'example-7e6bc',
+    databaseURL: 'https://example-7e6bc-default-rtdb.firebaseio.com',
     storageBucket: 'example-7e6bc.firebasestorage.app',
     iosBundleId: 'com.deend.flutterTest1',
   );
+
 }

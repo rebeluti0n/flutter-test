@@ -23,36 +23,18 @@ class _MapPage extends State<MapPage> {
     return Scaffold(
       appBar: AppBar(
         title: const Text('My 부동산'),
-        actions: [IconButton(onPressed: () {}, icon: const Icon(Icons.search))],
+        actions: [
+          IconButton(onPressed: () async {}, icon: const Icon(Icons.search))
+        ],
       ),
       drawer: Drawer(
         child: ListView(
           padding: EdgeInsets.zero,
           children: [
-            const DrawerHeader(
-              decoration: BoxDecoration(
-                color: Colors.blue,
-              ),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    '홍길동',
-                    style: TextStyle(
-                        fontSize: 20.0,
-                        fontWeight: FontWeight.bold,
-                        color: Colors.white),
-                  ),
-                  Text(
-                    'hong@gmail.com',
-                    style: TextStyle(fontSize: 16.0, color: Colors.white),
-                  )
-                ],
-              ),
-            ),
+            DrawerHeader(child: Text('조준수 님 환영합니다')),
             ListTile(
               title: const Text('내가 선택한 아파트'),
-              onTap: () async {},
+              onTap: () {},
             ),
             ListTile(
               title: const Text('설정'),
